@@ -1,6 +1,6 @@
 # COVID-19 Global Dashboard
 
-An end-to-end data analytics project exploring global COVID-19 trends, mortality rates, and vaccination impact using Python, MySQL, and Power BI.
+An end-to-end data analytics project exploring global COVID-19 trends, mortality rates, and vaccination impact using Python, Azure SQL, and Power BI.
 
 ---
 
@@ -15,7 +15,7 @@ This project analyzes the Our World in Data COVID-19 dataset to uncover meaningf
 | Tool | Purpose |
 |------|---------|
 | Python (Pandas, SQLAlchemy) | Data cleaning and ingestion |
-| MySQL | Data storage and SQL querying |
+| Azure SQL | Data storage and SQL querying |
 | Power BI | Dashboard and visualization |
 | Git | Version control |
 
