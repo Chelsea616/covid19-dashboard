@@ -1,6 +1,6 @@
 # COVID-19 Global Dashboard
 
-An end-to-end data analytics project exploring global COVID-19 trends, mortality rates, and vaccination impact using Python, Azure SQL, and Power BI.
+An end-to-end data analytics project exploring global COVID-19 trends, mortality rates, and vaccination impact using Python, Azure SQL Database, and Power BI.
 
 ---
 
@@ -33,12 +33,12 @@ The dataset covers global COVID-19 cases, deaths, and vaccination records from J
 ## Data Pipeline
 
 ```
-Raw CSV → Python (cleaning & transformation) → MySQL → Power BI Dashboard
+Raw CSV → import.py → MySQL → Azureconnect.py → Azure SQL Database → Power BI Dashboard
 ```
 
-1. **Python**: Selected relevant columns, handled null values, converted date formats, and loaded data into MySQL via SQLAlchemy
-2. **MySQL**: Stored cleaned data for structured querying and Power BI connection
-3. **Power BI**: Connected directly to MySQL, built date table, defined DAX measures, and developed three dashboard pages
+1. **import.py**: Selected relevant columns, handled null values, converted date formats, and loaded data into local MySQL via SQLAlchemy
+2. **Azureconnect.py**: Migrated cleaned data from local MySQL to Azure SQL Database on cloud using ActiveDirectory authentication
+3. **Power BI**: Connected directly to Azure SQL Database, built date table, defined DAX measures, and developed three dashboard pages
 
 ---
 
@@ -75,9 +75,10 @@ Raw CSV → Python (cleaning & transformation) → MySQL → Power BI Dashboard
 
 ```
 covid19-dashboard/
-├── import.py          # Data cleaning and MySQL ingestion script
-├── README.md          # Project documentation
-└── covid_dashboard.pbix  # Power BI dashboard file
+├── import.py              # Stage 1: CSV cleaning and ingestion into MySQL
+├── Azureconnect.py        # Stage 2: Migration from MySQL to Azure SQL Database
+├── README.md              # Project documentation
+└── covid_dashboard.pbix   # Power BI dashboard file
 ```
 
 ---
@@ -85,10 +86,10 @@ covid19-dashboard/
 ## How to Run
 
 1. Download the dataset from https://ourworldindata.org/covid-deaths
-2. Update MySQL credentials in `import.py`
-3. Run `python import.py` to load data into MySQL
+2. Update MySQL credentials in `import.py` and run to load data into local MySQL
+3. Update Azure SQL credentials in `Azureconnect.py` and run to migrate data to Azure SQL Database
 4. Open `covid_dashboard.pbix` in Power BI Desktop
-5. Update MySQL connection settings to your local instance
+5. Update Azure SQL connection settings to your own instance
 6. Refresh data
 
 ---
